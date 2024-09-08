@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getTabledata, insertData, deleteData, updateData, getdata} from './database.js';
+import { getTabledata, insertData, deleteData, updateData, getdata, getRowdata} from './database.js';
 const app = express();
 
 app.use(cors());
@@ -9,6 +9,12 @@ app.use(express.json());
 app.get('/givedata', async (req, res) => {
   const rows = await getTabledata();
   res.send(rows);
+});
+
+app.get('/givedata/:id', async (req, res) => {
+  const id = req.params.id;
+  const rows = await getRowdata(id);
+  res.send(rows[0]);
 });
 
 app.get('/givedata/singleuser', async (req, res) => {

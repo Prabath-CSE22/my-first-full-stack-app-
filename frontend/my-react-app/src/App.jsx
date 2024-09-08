@@ -1,20 +1,12 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
-import axios from 'axios' 
+
+import daisy from 'daisyui'
+import Home from './pages/Home.jsx';
+import ProductDes from './pages/ProductDes.jsx';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const [rowData, setRowData] = useState([]);
-
-
-  const fetchData = async () => {
-    const response = await axios.get('http://localhost:8080/givedata');
-    setRowData(response.data);
-  };
-
+ 
   const register = async (username, password) => {
     try {
       const response = await axios.post('http://localhost:8080/getdata', {name: username, password: password}); 
@@ -25,29 +17,14 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1>User data</h1>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>username</th>
-            <th>password</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rowData.map((row) => (
-            <tr key={row.PersonID}>
-              <td>{row.PersonID}</td>
-              <td>{row.username}</td>
-              <td>{row.Pword}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table><br />
-      {/* <button onClick={fetchData}>Click me</button> */}
-    </div>
+  
+    <BrowserRouter>  
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDes />} />
+      </Routes>
+    </BrowserRouter>
+  
   )
 }
 

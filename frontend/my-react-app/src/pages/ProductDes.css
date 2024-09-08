@@ -1,0 +1,23 @@
+img {
+    width: 40vh;
+    height: 40vh;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container{
+    padding: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.container div{
+    padding: 5px;
+}
+
+.comment-box form{
+    width: 100vh;
+    height: 100vh;
+}
