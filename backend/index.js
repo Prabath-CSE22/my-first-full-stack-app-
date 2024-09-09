@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getTabledata, insertData, deleteData, updateData, getdata, getRowdata} from './database.js';
+import { getTabledata, insertData, deleteData, updateData, getdata, getRowdata, addTocart, getFromcart} from './database.js';
 const app = express();
 
 app.use(cors());
@@ -25,6 +25,26 @@ app.get('/givedata/singleuser', async (req, res) => {
   }catch (error) {
     res.status(500).send(error);  
   }
+});
+
+app.get("/getfromcart/:id", async (req, res) => {
+    try{
+      const id = req.params.id;
+      const respond = await getFromcart(id);
+      res.status(200).send(respond[0]);
+    }catch(error){
+      res.status(500).send(error);
+    }
+});
+
+app.post("/addtocart", async (req, res) =>{
+    const {name, product, price} = req.body;
+    try{
+        await addTocart(name, product, price);
+        res.status(200).send(`Product added to your name: ${name}`);
+    }catch(error){
+      res.status(500).send(error);
+    }
 });
 
 app.post('/getdata', async (req, res) => {

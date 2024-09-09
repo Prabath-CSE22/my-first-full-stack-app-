@@ -16,12 +16,15 @@ const Home = () => {
         setRowData(response.data);
     };
     return (
-        <div>
-        <div className="product-list">
-            {rowData.map(product => (
-            <Card key={product.ID} product={product} />
-            ))}
-        </div>
+        <div className='homepage'>
+            <div className='nav'>
+                <h1>hiii</h1>
+            </div>
+            <div className="product-list">
+                {rowData.map(product => (
+                <Card key={product.ID} product={product} />
+                ))}
+            </div>
         </div>
     )
 }

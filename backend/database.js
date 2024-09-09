@@ -1,3 +1,4 @@
+import { response } from "express";
 import mysql from "mysql2";
 
 const db = mysql.createPool({
@@ -16,6 +17,15 @@ export async function getRowdata(id){
     return rows;
 }
 
+export async function getFromcart(id) {
+    const [respond] = await db.query("SELECT * FROM cart WHERE ID = ?", [id]);
+    return respond;
+}
+
+export async function addTocart(name, product, price) {
+    const responds = await db.query("INSERT INTO cart (customer, product_name, price) VALUES( ?, ?, ?)", [name, product, price]);
+    return responds;
+}
 {/*make sure to change these queries from here onwards*/}
 export async function insertData(name, password){
     await db.query("insert into product (username, Pword) values (?, ?)", [name, password]);

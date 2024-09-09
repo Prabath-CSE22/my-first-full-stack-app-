@@ -2,12 +2,34 @@ body {
     font-family: 'Courier New', Courier, monospace;
     padding: 50px;
     background-color: #f0f0f0;
-}
-
-.product-list{
-    width: 92%;
     display: flex;
-    position: absolute;
     justify-content: center;
     align-items: center;
+    min-height: 100vh; /* Ensures the body takes full viewport height */
+    margin: 0; /* Removes default margin */
+}
+.homepage{
+    display: flex; 
+}
+.product-list {
+    width: 90%;
+    display: flex; 
+    flex-wrap: wrap; /*Allows items to wrap onto new rows*/
+    justify-content: last baseline;
+    /* gap: 20px; Adds spacing between cards */
+    background-color: yellow;
+}
+
+/* .Card{
+    flex: 0 1 calc(25% - 20px); 
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+} */
+
+.nav{
+    height: 100vh;
+    width: 15%;
+    background-color: blue;
 }
