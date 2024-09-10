@@ -1,4 +1,4 @@
-import { response } from "express";
+
 import mysql from "mysql2";
 
 const db = mysql.createPool({
@@ -19,6 +19,11 @@ export async function getRowdata(id){
 
 export async function getFromcart(id) {
     const [respond] = await db.query("SELECT * FROM cart WHERE ID = ?", [id]);
+    return respond;
+}
+
+export async function getAllFromcart(id) {
+    const [respond] = await db.query("SELECT * FROM cart");
     return respond;
 }
 

@@ -22,7 +22,7 @@ const Home = () => {
             </div>
             <div className="product-list">
                 {rowData.map(product => (
-                <Card key={product.ID} product={product} />
+                    <Card key={product.ID} product={product} />
                 ))}
             </div>
         </div>

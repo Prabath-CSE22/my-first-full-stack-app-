@@ -1,0 +1,18 @@
+.cartele{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 90%;
+    background-color: #f0f0f0;
+}
+
+.cartele img{
+    width: 100px;
+    height: 100px;
+}
+.btnz{
+    display: flex;
+}
